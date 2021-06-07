@@ -1,24 +1,264 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Delm-Medium.otf">
+            <string>Delm-Medium</string>
+        </array>
+        <array key="ThirstySoftRegular.otf">
+            <string>ThirstySoftRegular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6M2-F2-Xbj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njg-wA-jtL">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
+                                        <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="38"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m8V-jE-24E">
+                                        <rect key="frame" x="0.0" y="111.5" width="320" height="345"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="▲ SWAP TO SHARE ▲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiM-vU-HQb">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-44-eNZ">
+                                                <rect key="frame" x="0.0" y="25" width="320" height="320"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geI-Yb-T14">
+                                                        <rect key="frame" x="8" y="8" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="75"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.2588235438" green="0.5647059083" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="gridImage1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1fu-QV-vtV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUG-TH-Er6">
+                                                        <rect key="frame" x="164" y="8" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="75"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.2588235438" green="0.5647059083" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="gridImage2Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GAq-rY-ix0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-kw-0bX">
+                                                        <rect key="frame" x="8" y="164" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="75"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.2588235438" green="0.5647059083" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="gridImage3Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="biL-1W-MKP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-5A-5P0">
+                                                        <rect key="frame" x="164" y="164" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="75"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.2588235438" green="0.5647059083" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="gridImage4Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WjU-U1-JCM"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8r-YI-lT4">
+                                                        <rect key="frame" x="8" y="8" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIp-X2-Cnc">
+                                                        <rect key="frame" x="164" y="8" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mBA-fE-1Xp">
+                                                        <rect key="frame" x="8" y="164" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-Sy-Shr">
+                                                        <rect key="frame" x="164" y="164" width="148" height="148"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.05882352591" green="0.40000003579999999" blue="0.58431375029999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="345" id="UV7-B8-HLr"/>
+                                        </constraints>
+                                        <variation key="heightClass=compact" axis="horizontal">
+                                            <mask key="constraints">
+                                                <exclude reference="UV7-B8-HLr"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-Bt-npr">
+                                        <rect key="frame" x="0.0" y="456.5" width="320" height="111.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1E-wR-DLn" userLabel="grid1 Select Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="111.5"/>
+                                                <state key="normal" image="miniGrid1"/>
+                                                <connections>
+                                                    <action selector="grid1Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DEO-zh-tDl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-GH-gp3" userLabel="grid2 Select Button">
+                                                <rect key="frame" x="106.5" y="0.0" width="107" height="111.5"/>
+                                                <state key="normal" image="miniGrid2"/>
+                                                <connections>
+                                                    <action selector="grid2Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kEY-za-euh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-Qd-tTL" userLabel="grid3 Select Button">
+                                                <rect key="frame" x="213.5" y="0.0" width="106.5" height="111.5"/>
+                                                <state key="normal" image="miniGrid3"/>
+                                                <connections>
+                                                    <action selector="grid3Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nNa-Pr-fa9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <variation key="heightClass=compact" axis="vertical"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="m8V-jE-24E" firstAttribute="centerX" secondItem="6M2-F2-Xbj" secondAttribute="centerX" id="4Bk-7s-7jn"/>
+                                    <constraint firstAttribute="width" constant="320" id="TI9-4t-HhA"/>
+                                    <constraint firstAttribute="height" constant="320" id="YvD-CH-auM"/>
+                                    <constraint firstItem="m8V-jE-24E" firstAttribute="centerY" secondItem="6M2-F2-Xbj" secondAttribute="centerY" id="bZG-sv-qJp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YvD-CH-auM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact" axis="horizontal">
+                                    <mask key="constraints">
+                                        <exclude reference="TI9-4t-HhA"/>
+                                        <include reference="YvD-CH-auM"/>
+                                        <exclude reference="4Bk-7s-7jn"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.71764707569999997" green="0.84313726430000002" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6M2-F2-Xbj" secondAttribute="trailing" id="CN1-ym-m6d"/>
+                            <constraint firstItem="6M2-F2-Xbj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="K1N-B9-l91"/>
+                            <constraint firstItem="6M2-F2-Xbj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PGJ-eB-rYg"/>
+                            <constraint firstItem="6M2-F2-Xbj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xf5-8P-jZN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6M2-F2-Xbj" secondAttribute="bottom" id="j2z-MQ-CN7"/>
+                            <constraint firstItem="6M2-F2-Xbj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wxF-h4-ogl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="K1N-B9-l91"/>
+                                <exclude reference="PGJ-eB-rYg"/>
+                                <exclude reference="CN1-ym-m6d"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="K1N-B9-l91"/>
+                                <include reference="PGJ-eB-rYg"/>
+                                <exclude reference="Xf5-8P-jZN"/>
+                                <include reference="CN1-ym-m6d"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="grid1SelectButton" destination="T1E-wR-DLn" id="aDM-wN-LrU"/>
+                        <outlet property="grid2SelectButton" destination="ohU-GH-gp3" id="L27-nv-Wrc"/>
+                        <outlet property="grid3SelectButton" destination="wf8-Qd-tTL" id="4On-ew-MZh"/>
+                        <outlet property="gridImage1" destination="J8r-YI-lT4" id="cc2-JC-N9K"/>
+                        <outlet property="gridImage1button" destination="geI-Yb-T14" id="fdt-6D-VK8"/>
+                        <outlet property="gridImage2" destination="WIp-X2-Cnc" id="b1N-eP-myR"/>
+                        <outlet property="gridImage2button" destination="LUG-TH-Er6" id="4Xi-ca-H4E"/>
+                        <outlet property="gridImage3" destination="mBA-fE-1Xp" id="947-Rn-E4O"/>
+                        <outlet property="gridImage3button" destination="ucM-kw-0bX" id="JTD-ei-IuD"/>
+                        <outlet property="gridImage4" destination="jZL-Sy-Shr" id="oP4-gW-hmP"/>
+                        <outlet property="gridImage4button" destination="fpN-5A-5P0" id="CbQ-O9-Dcu"/>
+                        <outlet property="instagridLogo" destination="njg-wA-jtL" id="ySf-VP-z0H"/>
+                        <outlet property="swapToShareLabel" destination="JiM-vU-HQb" id="B79-In-89G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="15.942028985507248" y="92.119565217391312"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="miniGrid1" width="85.040000915527344" height="85.040000915527344"/>
+        <image name="miniGrid2" width="85.040000915527344" height="85.040000915527344"/>
+        <image name="miniGrid3" width="85.040000915527344" height="85.040000915527344"/>
+    </resources>
 </document>
