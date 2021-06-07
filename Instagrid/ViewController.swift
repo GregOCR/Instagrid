@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var instagridLogo: UILabel!
     @IBOutlet weak var swapToShareLabel: UILabel!
-        
+    
+    @IBOutlet weak var gridGlobalView: UIView!
+    
     @IBOutlet weak var grid1SelectButton: UIButton!
     @IBOutlet weak var grid2SelectButton: UIButton!
     @IBOutlet weak var grid3SelectButton: UIButton!
@@ -32,6 +34,9 @@ class ViewController: UIViewController {
         }
     }
     
+    private let imagePicker = UIImagePickerController()
+    private var loadImageInView: UIImageView!
+    
     @IBAction func grid1Selection(_ sender: Any) {
         updateImagesPlacesForGrid(number: 1)
     }
@@ -43,14 +48,42 @@ class ViewController: UIViewController {
     @IBAction func grid3Selection(_ sender: Any) {
         updateImagesPlacesForGrid(number: 3)
     }
-        
+    
     @IBAction func gridImage1Button(_ sender: Any) {
+        loadImage(number: 1)
     }
     @IBAction func gridImage2Button(_ sender: Any) {
+        loadImage(number: 2)
     }
     @IBAction func gridImage3Button(_ sender: Any) {
+        loadImage(number: 3)
     }
     @IBAction func gridImage4Button(_ sender: Any) {
+        loadImage(number: 4)
+    }
+    
+    private func loadImage(number: Int) {
+        
+        let imageContainers = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+        loadImageInView = imageContainers[number-1]
+    }
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.loadImageInView.contentMode = .scaleAspectFill
+            self.loadImageInView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func updateImagesPlacesForGrid(number: Int) {
@@ -107,22 +140,26 @@ class ViewController: UIViewController {
     }
     
     // rotate objects when device direction changes
-    override func viewWillLayoutSubviews() {
-        let objectsToRotate = [self.instagridLogo, self.swapToShareLabel]
-        if self.deviceOrientation.isPortrait == true {
-            objectsToRotate.forEach { $0!.transform = .identity }
-        } else {
-            objectsToRotate.forEach { $0!.transform = CGAffineTransform(rotationAngle: -3.14/2) }
-            self.swapToShareLabel.frame.size = CGSize(width: 15, height: 320)
-        }
-    }
- 
+    //    override func viewWillLayoutSubviews() {
+    //        let objectsToRotate = [self.instagridLogo, self.swapToShareLabel]
+    //        if self.deviceOrientation.isPortrait == true {
+    //            objectsToRotate.forEach { $0!.transform = .identity }
+    //        } else {
+    //            objectsToRotate.forEach { $0!.transform = CGAffineTransform(rotationAngle: -3.14/2) }
+    //            self.swapToShareLabel.frame.size = CGSize(width: 15, height: 320)
+    //        }
+    //    }
+    
     override func viewDidLoad() {
         self.grid1SelectButton.isHidden = true
+        updateImagesPlacesForGrid(number: 1)
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        imagePicker.delegate = self
+        
     }
-
-
+    
+    
 }
 

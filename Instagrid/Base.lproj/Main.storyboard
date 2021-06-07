@@ -239,6 +239,7 @@
                         <outlet property="grid1SelectButton" destination="T1E-wR-DLn" id="aDM-wN-LrU"/>
                         <outlet property="grid2SelectButton" destination="ohU-GH-gp3" id="L27-nv-Wrc"/>
                         <outlet property="grid3SelectButton" destination="wf8-Qd-tTL" id="4On-ew-MZh"/>
+                        <outlet property="gridGlobalView" destination="cgY-44-eNZ" id="gbR-j4-647"/>
                         <outlet property="gridImage1" destination="J8r-YI-lT4" id="cc2-JC-N9K"/>
                         <outlet property="gridImage1button" destination="geI-Yb-T14" id="fdt-6D-VK8"/>
                         <outlet property="gridImage2" destination="WIp-X2-Cnc" id="b1N-eP-myR"/>
