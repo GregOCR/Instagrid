@@ -82,14 +82,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func logoLongPressGestureGridOption(_ sender: Any) {
         if self.logoLongPressGesture.state == .began {
-            var messagePopupText = "OFF"
+            var messagePopupText = "🚫 OFF"
             if self.cleanGridWhenSharedOption {
                 self.cleanGridWhenSharedOption = false
             } else {
                 self.cleanGridWhenSharedOption = true
-                messagePopupText = "ON"
+                messagePopupText = "✅ ON"
             }
-            self.messagePopup(title: "Clear the Grid after shared", message: messagePopupText , buttonString: "", asAlert: false, delay: 2)
+            self.messagePopup(title: "Grid option \(messagePopupText)", message: "Cleared after shared" , buttonString: "", asAlert: true, delay: 2)
         }
         
 
