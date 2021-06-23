@@ -61,9 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				37F1A6B7266FDEAB001DBBAD /* FileRessources */,
-				37F1A6BA266FDF23001DBBAD /* Model */,
-				37F1A6B8266FDF05001DBBAD /* View */,
-				37F1A6B9266FDF0A001DBBAD /* Controller */,
+				37F1A694266DF11F001DBBAD /* Main.storyboard */,
+				37F1A692266DF11F001DBBAD /* ViewController.swift */,
 				37F1A69C266DF11F001DBBAD /* Info.plist */,
 			);
 			path = Instagrid;
@@ -72,6 +71,7 @@
 		37F1A6B7266FDEAB001DBBAD /* FileRessources */ = {
 			isa = PBXGroup;
 			children = (
+				37F1A699266DF11F001DBBAD /* LaunchScreen.storyboard */,
 				37F1A68E266DF11F001DBBAD /* AppDelegate.swift */,
 				37F1A690266DF11F001DBBAD /* SceneDelegate.swift */,
 				37F1A697266DF11F001DBBAD /* Assets.xcassets */,
@@ -79,30 +79,6 @@
 				37F1A6A6266DFD3A001DBBAD /* ThirstySoftRegular.otf */,
 			);
 			path = FileRessources;
-			sourceTree = "<group>";
-		};
-		37F1A6B8266FDF05001DBBAD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				37F1A694266DF11F001DBBAD /* Main.storyboard */,
-				37F1A699266DF11F001DBBAD /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		37F1A6B9266FDF0A001DBBAD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				37F1A692266DF11F001DBBAD /* ViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		37F1A6BA266FDF23001DBBAD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
