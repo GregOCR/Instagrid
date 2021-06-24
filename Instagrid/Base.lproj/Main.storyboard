@@ -59,51 +59,43 @@
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFM-6E-f0Z">
                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KYC-zS-E5o">
-                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="50"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-nH-zxC">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="25"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="25" id="238-cP-iE6"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="22"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <variation key="heightClass=compact">
-                                                                            <mask key="constraints">
-                                                                                <exclude reference="238-cP-iE6"/>
-                                                                            </mask>
-                                                                        </variation>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP TO SHARE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j69-ep-eVs">
-                                                                        <rect key="frame" x="0.0" y="25" width="260" height="25"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="25" id="9k2-ZY-sST"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="22"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <variation key="heightClass=compact">
-                                                                            <mask key="constraints">
-                                                                                <exclude reference="9k2-ZY-sST"/>
-                                                                            </mask>
-                                                                        </variation>
-                                                                    </label>
-                                                                </subviews>
-                                                                <variation key="heightClass=compact" axis="horizontal"/>
-                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-nH-zxC">
+                                                                <rect key="frame" x="124" y="0.0" width="22" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="238-cP-iE6"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="22"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP TO SHARE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j69-ep-eVs">
+                                                                <rect key="frame" x="58.5" y="25" width="153" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="9k2-ZY-sST"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="22"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="j69-ep-eVs" firstAttribute="centerX" secondItem="rFM-6E-f0Z" secondAttribute="centerX" id="3bl-q1-vDT"/>
+                                                            <constraint firstItem="pQ2-nH-zxC" firstAttribute="centerY" secondItem="rFM-6E-f0Z" secondAttribute="centerY" id="7bc-lK-q0t"/>
                                                             <constraint firstAttribute="height" constant="50" id="ASO-qd-iaS"/>
-                                                            <constraint firstAttribute="bottom" secondItem="KYC-zS-E5o" secondAttribute="bottom" id="MeZ-NB-EXj"/>
-                                                            <constraint firstItem="KYC-zS-E5o" firstAttribute="leading" secondItem="rFM-6E-f0Z" secondAttribute="leading" id="NIa-xt-T1I"/>
-                                                            <constraint firstItem="KYC-zS-E5o" firstAttribute="top" secondItem="rFM-6E-f0Z" secondAttribute="top" id="RO6-KI-zrI"/>
-                                                            <constraint firstAttribute="trailing" secondItem="KYC-zS-E5o" secondAttribute="trailing" constant="10" id="dCX-Tf-NHw"/>
+                                                            <constraint firstItem="j69-ep-eVs" firstAttribute="top" secondItem="pQ2-nH-zxC" secondAttribute="bottom" id="ZWo-Ng-YmF"/>
+                                                            <constraint firstItem="pQ2-nH-zxC" firstAttribute="centerX" secondItem="rFM-6E-f0Z" secondAttribute="centerX" id="eBn-rC-mNY"/>
+                                                            <constraint firstItem="pQ2-nH-zxC" firstAttribute="top" secondItem="rFM-6E-f0Z" secondAttribute="top" id="ifI-j6-q1H"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="7bc-lK-q0t"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=compact">
                                                             <mask key="constraints">
                                                                 <exclude reference="ASO-qd-iaS"/>
+                                                                <include reference="7bc-lK-q0t"/>
+                                                                <exclude reference="ifI-j6-q1H"/>
                                                             </mask>
                                                         </variation>
                                                     </view>

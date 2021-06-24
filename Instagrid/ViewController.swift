@@ -80,6 +80,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.loadImage(4)
     }
     
+    // switching the clear after shared grid option when long press the logo
     @IBAction func logoLongPressGestureGridOption(_ sender: Any) {
         if self.logoLongPressGesture.state == .began {
             var messagePopupText = "🚫 OFF"
@@ -91,10 +92,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             self.messagePopup(title: "Grid option \(messagePopupText)", message: "Cleared after shared" , buttonString: "", asAlert: true, delay: 2)
         }
-        
-
     }
     
+    // managing the right gesture for the grid when swiped up / left depending the device orientation
     @objc func swipeGridGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if self.deviceOrientationIsPortrait() {
             if gesture.direction == .up {
@@ -107,7 +107,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    
+    // bool if the device is in portrait orientation
     private func deviceOrientationIsPortrait() -> Bool {
         var result = true
         let size = UIScreen.main.bounds.size
@@ -115,10 +115,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return result
     }
     
+    // stock the origin of the grid
     private func updateGlobalViewOrigin() {
         self.globalViewOrigin = self.gridGlobalView.frame.origin
     }
     
+    // create a message popup on the device
     private func messagePopup(title: String, message: String, buttonString: String, asAlert: Bool, delay: Int) {
         var popupStyle: UIAlertController.Style = .alert
         if asAlert == false {
@@ -143,9 +145,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imageContainers = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
         let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
 
-        imageContainers.forEach { $0!.image = nil}
+        imageContainers.forEach { $0?.image = nil }
         
-        buttons.forEach { $0!.alpha = 1 }
+        buttons.forEach { $0?.alpha = 1 }
     }
     
     private func loadImage(_ number: Int) {
@@ -167,7 +169,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.loadImageInView.image = pickedImage
             self.imagePicked[pickingImage-1] = 1
             
-            buttons[self.pickingImage-1]!.alpha = 0.02
+            buttons[self.pickingImage-1]?.alpha = 0.02
         }
         dismiss(animated: true, completion: nil)
     }
@@ -196,17 +198,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return image
     }
     
+    // select the clicked grid and show it in the main view
     private func gridSelection(_ grid: Int) {
         let gridButtonsSet = [self.grid1SelectButton, self.grid2SelectButton, self.grid3SelectButton]
         
         self.updateCheckedGridSelectorFor(grid)
         
-        gridButtonsSet.forEach { $0!.isEnabled = true }
-        gridButtonsSet[grid-1]!.isEnabled = false
+        gridButtonsSet.forEach { $0?.isEnabled = true }
+        gridButtonsSet[grid-1]?.isEnabled = false
         
         self.updateImagesLocationIntoGrid(number: grid)
     }
     
+    // updating the location and size of images button depending the selected grid
     private func updateImagesLocationIntoGrid(number: Int) {
         UIView.animate(withDuration: 0.25) {
             self.gridImage1button.frame.size = CGSize(width: 254, height: 124)
@@ -243,23 +247,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.updateImagesPositionAndSize()
     }
     
-    // repositionning and resizing images into the grid as selected
+    // updating the location and size of images as images buttons are
     private func updateImagesPositionAndSize() {
         let images = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
         let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
         
         for i in 0...3 {
             UIView.animate(withDuration: 0.25) {
-                images[i]!.frame.size = buttons[i]!.frame.size
-                images[i]!.frame.origin = buttons[i]!.frame.origin
+                images[i]?.frame.size = (buttons[i]?.frame.size) ?? CGSize()
+                images[i]?.frame.origin = (buttons[i]?.frame.origin) ?? CGPoint()
             }
         }
     }
     
+    // switching the selected grid icon depending the selected grid
     private func updateCheckedGridSelectorFor(_ grid: Int) {
         let checkedGridSelectors = [self.checkedGridSelector1, self.checkedGridSelector2, self.checkedGridSelector3]
-        checkedGridSelectors.forEach { $0!.isHidden = true }
-        checkedGridSelectors[grid-1]!.isHidden = false
+        checkedGridSelectors.forEach { $0?.isHidden = true }
+        checkedGridSelectors[grid-1]?.isHidden = false
     }
     
     private func shareTheGrid() {
@@ -269,15 +274,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
-        } else {
+        } else { // vibrating and messaging when the grid is not filled
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             self.messagePopup(title: "Action request", message: "You need to fill your Instagrid before to share!", buttonString: "OK", asAlert: true, delay: 0)
         }
     }
     
-    // animate and let appear a new grid when sharing
+    // animate and let appear the grid again when sharing
     private func goAndAppearAgain(forView view: UIView, duration: Int) {
-        // animate the grid
+        // animate the grid out the screen
         if self.deviceOrientationIsPortrait() {
             UIView.animate(withDuration: TimeInterval(duration)) {
                 view.frame.origin.y = -UIScreen.main.bounds.size.height
@@ -287,7 +292,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 view.frame.origin.x = -UIScreen.main.bounds.size.width
             }
         }
-        // grid appear again with images reset
+        // grid appear again + if the option is ON, images are reseted
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(duration)) {
             if self.cleanGridWhenSharedOption {
                 self.resetImagesIntoTheGrid()
@@ -300,6 +305,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    // change the text and alignment of the grid text
     private func changeSharingLabelTexts(forFirst text1: String, withAlignement alignText1: NSTextAlignment, firSecond text2: String) {
         self.arrowToShareLabel.text = text1
         self.arrowToShareLabel.textAlignment = alignText1
