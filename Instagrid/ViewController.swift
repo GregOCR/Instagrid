@@ -49,7 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private var globalViewOrigin = CGPoint()
     
-    private var cleanGridWhenSharedOption = false
+    private var cleanGridWhenSharedOption = true
     
     
     @IBAction func resetGridButton(_ sender: Any) {
@@ -83,14 +83,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // switching the clear after shared grid option when long press the logo
     @IBAction func logoLongPressGestureGridOption(_ sender: Any) {
         if self.logoLongPressGesture.state == .began {
-            var messagePopupText = "🚫 OFF"
+            var messagePopupText = ["🚫 OFF", "WILL NOT"]
             if self.cleanGridWhenSharedOption {
                 self.cleanGridWhenSharedOption = false
             } else {
                 self.cleanGridWhenSharedOption = true
-                messagePopupText = "✅ ON"
+                messagePopupText = ["✅ ON", "WILL"]
             }
-            self.messagePopup(title: "Grid option \(messagePopupText)", message: "Cleared after shared" , buttonString: "", asAlert: true, delay: 2)
+            self.messagePopup(title: "Option \(messagePopupText[0])", message: "Grid \(messagePopupText[1]) be cleared after shared" , buttonString: "", asAlert: true, delay: 2)
         }
     }
     
@@ -144,7 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let imageContainers = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
         let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
-
+        
         imageContainers.forEach { $0?.image = nil }
         
         buttons.forEach { $0?.alpha = 1 }
@@ -163,7 +163,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
-
+        
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.loadImageInView.contentMode = .scaleAspectFill
             self.loadImageInView.image = pickedImage
@@ -210,38 +210,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.updateImagesLocationIntoGrid(number: grid)
     }
     
+    private func defineSize(forViews views: [UIView], withWidth width: Int, withHeight height: Int) {
+        views.forEach { $0.frame.size = CGSize(width: width, height: height) }
+    }
+    
+    private func defineOriginX(forViews views: [UIView], withX xOrigin: CGFloat) {
+        views.forEach { $0.frame.origin.x = xOrigin }
+    }
+    
+    private func defineOriginY(forViews views: [UIView], withY yOrigin: CGFloat) {
+        views.forEach { $0.frame.origin.y = yOrigin }
+    }
+    
     // updating the location and size of images button depending the selected grid
     private func updateImagesLocationIntoGrid(number: Int) {
         UIView.animate(withDuration: 0.25) {
-            self.gridImage1button.frame.size = CGSize(width: 254, height: 124)
-            self.gridImage1button.frame.origin.y = 8
-            self.gridImage2button.frame.origin.x = 8
-            self.gridImage2button.frame.origin.y = 8
-            self.gridImage3button.frame.origin.x = 138
-            self.gridImage3button.frame.origin.y = 138
-            self.gridImage4.frame.size = CGSize(width: 0, height: 0)
-            self.gridImage4button.frame.size = CGSize(width: 0, height: 0)
-        }
-        switch number {
-        case 2:
-            self.gridType = 3
-            UIView.animate(withDuration: 0.25) {
-                self.gridImage1button.frame.origin.y = 138
-                self.gridImage3button.frame.origin.y = 8
-            }
-        case 3:
-            self.gridType = 4
-            UIView.animate(withDuration: 0.25) {
-                self.gridImage1button.frame.size = CGSize(width: 124, height: 124)
-                self.gridImage2button.frame.origin.x = 138
-                self.gridImage3button.frame.origin.x = 8
-                self.gridImage4.frame.size = CGSize(width: 124, height: 124)
-                self.gridImage4button.frame.size = CGSize(width: 124, height: 124)
-            }
-        default:
-            self.gridType = 3
-            UIView.animate(withDuration: 0.25) {
-                self.gridImage2button.frame.origin.y = 138
+            self.defineOriginX(forViews: [self.gridImage2button], withX: 8)
+            self.defineOriginX(forViews: [self.gridImage3button], withX: 138)
+            self.defineOriginY(forViews: [self.gridImage1button, self.gridImage2button], withY: 8)
+            self.defineOriginY(forViews: [self.gridImage3button], withY: 138)
+            self.defineSize(forViews: [self.gridImage1button], withWidth: 254, withHeight: 124)
+            self.defineSize(forViews: [self.gridImage4, self.gridImage4button], withWidth: 0, withHeight: 0)
+            
+            switch number {
+            case 2:
+                self.gridType = 3
+                self.defineOriginY(forViews: [self.gridImage1button], withY: 138)
+                self.defineOriginY(forViews: [self.gridImage3button], withY: 8)
+            case 3:
+                self.gridType = 4
+                self.defineSize(forViews: [self.gridImage1button, self.gridImage4, self.gridImage4button], withWidth: 124, withHeight: 124)
+                self.defineOriginX(forViews: [self.gridImage2button], withX: 138)
+                self.defineOriginX(forViews: [self.gridImage3button], withX: 8)
+            default:
+                self.gridType = 3
+                self.defineOriginY(forViews: [self.gridImage2button], withY: 138)
             }
         }
         self.updateImagesPositionAndSize()
@@ -282,13 +285,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // animate and let appear the grid again when sharing
     private func goAndAppearAgain(forView view: UIView, duration: Int) {
+        self.updateGlobalViewOrigin()
         // animate the grid out the screen
-        if self.deviceOrientationIsPortrait() {
-            UIView.animate(withDuration: TimeInterval(duration)) {
+        UIView.animate(withDuration: TimeInterval(duration)) {
+            if self.deviceOrientationIsPortrait() {
                 view.frame.origin.y = -UIScreen.main.bounds.size.height
-            }
-        } else {
-            UIView.animate(withDuration: TimeInterval(duration)) {
+            } else {
                 view.frame.origin.x = -UIScreen.main.bounds.size.width
             }
         }
@@ -297,10 +299,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if self.cleanGridWhenSharedOption {
                 self.resetImagesIntoTheGrid()
             }
-            view.alpha = 0
-            view.frame.origin = self.globalViewOrigin
-            UIView.animate(withDuration: TimeInterval(duration*2)) {
-                view.alpha = 1
+            UIView.animate(withDuration: TimeInterval(duration)) {
+                view.frame.origin = self.globalViewOrigin
             }
         }
     }
@@ -325,8 +325,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.gridGlobalView.addGestureRecognizer(swipeUpGrid)
         
         self.imagePicker.delegate = self
-        
-        self.updateGlobalViewOrigin()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -336,8 +334,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewDidLayoutSubviews() {
-        self.updateGlobalViewOrigin()
-        
         if deviceOrientationIsPortrait() {
             self.changeSharingLabelTexts(forFirst: "▲", withAlignement: .center, firSecond: "SWIPE UP TO SHARE")
         } else {
