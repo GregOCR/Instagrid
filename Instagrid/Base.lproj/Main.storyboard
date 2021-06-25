@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -440,6 +441,7 @@
                         <outlet property="grid1SelectButton" destination="T1E-wR-DLn" id="aDM-wN-LrU"/>
                         <outlet property="grid2SelectButton" destination="ohU-GH-gp3" id="L27-nv-Wrc"/>
                         <outlet property="grid3SelectButton" destination="wf8-Qd-tTL" id="4On-ew-MZh"/>
+                        <outlet property="gridBlankImage" destination="Vhu-NS-6Au" id="ihJ-X0-mEx"/>
                         <outlet property="gridGlobalView" destination="cgY-44-eNZ" id="gbR-j4-647"/>
                         <outlet property="gridImage1" destination="J8r-YI-lT4" id="cc2-JC-N9K"/>
                         <outlet property="gridImage1button" destination="geI-Yb-T14" id="fdt-6D-VK8"/>

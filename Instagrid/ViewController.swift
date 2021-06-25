@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var arrowToShareLabel: UILabel!
     @IBOutlet weak var swipeToShareLabel: UILabel!
     
+    @IBOutlet weak var gridBlankImage: UIImageView!
     @IBOutlet weak var gridGlobalView: UIView!
     
     @IBOutlet weak var grid1SelectButton: UIButton!
@@ -46,9 +47,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private var imagePicked = [0,0,0,0]
     
     private var gridType = Int()
-    
-    private var globalViewOrigin = CGPoint()
-    
+        
     private var cleanGridWhenSharedOption = true
     
     
@@ -114,12 +113,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if size.width > size.height { result = false }
         return result
     }
-    
-    // stock the origin of the grid
-    private func updateGlobalViewOrigin() {
-        self.globalViewOrigin = self.gridGlobalView.frame.origin
-    }
-    
+        
     // create a message popup on the device
     private func messagePopup(title: String, message: String, buttonString: String, asAlert: Bool, delay: Int) {
         var popupStyle: UIAlertController.Style = .alert
@@ -271,7 +265,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func shareTheGrid() {
-        self.updateGlobalViewOrigin()
         if self.checkIfAllImagesArePickedIntoTheGrid() {
             UIView.animate(withDuration: TimeInterval(1)) {
                 if self.deviceOrientationIsPortrait() {
@@ -288,7 +281,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         if self.cleanGridWhenSharedOption {
                             self.resetImagesIntoTheGrid()
                         }
-                        self.gridGlobalView.frame.origin = self.globalViewOrigin
+                        self.gridGlobalView.frame.origin = self.gridBlankImage.frame.origin
                     }
                 }
                 activityViewController.popoverPresentationController?.sourceView = self.view
