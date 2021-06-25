@@ -271,37 +271,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func shareTheGrid() {
+        self.updateGlobalViewOrigin()
         if self.checkIfAllImagesArePickedIntoTheGrid() {
-            self.goAndAppearAgain(forView: self.gridGlobalView, duration: 1)
-            let share = [self.captureTheGrid()]
-            let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            self.present(activityViewController, animated: true, completion: nil)
+            UIView.animate(withDuration: TimeInterval(1)) {
+                if self.deviceOrientationIsPortrait() {
+                    self.gridGlobalView.frame.origin.y = -UIScreen.main.bounds.size.height
+                } else {
+                    self.gridGlobalView.frame.origin.x = -UIScreen.main.bounds.size.width
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(1)) {
+                let share = [self.captureTheGrid()]
+                let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
+                activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+                    UIView.animate(withDuration: TimeInterval(1)) {
+                        if self.cleanGridWhenSharedOption {
+                            self.resetImagesIntoTheGrid()
+                        }
+                        self.gridGlobalView.frame.origin = self.globalViewOrigin
+                    }
+                }
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                self.present(activityViewController, animated: true, completion: nil)
+            }
         } else { // vibrating and messaging when the grid is not filled
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             self.messagePopup(title: "Action request", message: "You need to fill your Instagrid before to share!", buttonString: "OK", asAlert: true, delay: 0)
-        }
-    }
-    
-    // animate and let appear the grid again when sharing
-    private func goAndAppearAgain(forView view: UIView, duration: Int) {
-        self.updateGlobalViewOrigin()
-        // animate the grid out the screen
-        UIView.animate(withDuration: TimeInterval(duration)) {
-            if self.deviceOrientationIsPortrait() {
-                view.frame.origin.y = -UIScreen.main.bounds.size.height
-            } else {
-                view.frame.origin.x = -UIScreen.main.bounds.size.width
-            }
-        }
-        // grid appear again + if the option is ON, images are reseted
-        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(duration)) {
-            if self.cleanGridWhenSharedOption {
-                self.resetImagesIntoTheGrid()
-            }
-            UIView.animate(withDuration: TimeInterval(duration)) {
-                view.frame.origin = self.globalViewOrigin
-            }
         }
     }
     
