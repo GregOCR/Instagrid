@@ -294,9 +294,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // change the text and alignment of the grid text
-    private func changeSharingLabelTexts(forFirst text1: String, withAlignement alignText1: NSTextAlignment, firSecond text2: String) {
+    private func changeSharingLabelTexts(forFirst text1: String, forSecond text2: String) {
         self.arrowToShareLabel.text = text1
-        self.arrowToShareLabel.textAlignment = alignText1
         self.swipeToShareLabel.text = text2
     }
     
@@ -323,9 +322,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLayoutSubviews() {
         if deviceOrientationIsPortrait() {
-            self.changeSharingLabelTexts(forFirst: "▲", withAlignement: .center, firSecond: "SWIPE UP TO SHARE")
+            self.changeSharingLabelTexts(forFirst: "▲", forSecond: "SWIPE UP TO SHARE")
         } else {
-            self.changeSharingLabelTexts(forFirst: "◀︎", withAlignement: .right, firSecond: "SWIPE LEFT TO SHARE")
+            self.changeSharingLabelTexts(forFirst: "◀︎", forSecond: "SWIPE LEFT TO SHARE")
         }
     }
     
