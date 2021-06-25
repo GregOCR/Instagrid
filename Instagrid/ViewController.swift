@@ -224,7 +224,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.defineOriginY(forViews: [self.gridImage1button, self.gridImage2button], withY: 8)
             self.defineOriginY(forViews: [self.gridImage3button], withY: 138)
             self.defineSize(forViews: [self.gridImage1button], withWidth: 254, withHeight: 124)
-            self.defineSize(forViews: [self.gridImage4, self.gridImage4button], withWidth: 0, withHeight: 0)
+            self.defineSize(forViews: [self.gridImage4button], withWidth: 0, withHeight: 0)
             
             switch number {
             case 2:
@@ -233,7 +233,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.defineOriginY(forViews: [self.gridImage3button], withY: 8)
             case 3:
                 self.gridType = 4
-                self.defineSize(forViews: [self.gridImage1button, self.gridImage4, self.gridImage4button], withWidth: 124, withHeight: 124)
+                self.defineSize(forViews: [self.gridImage1button, self.gridImage4button], withWidth: 124, withHeight: 124)
                 self.defineOriginX(forViews: [self.gridImage2button], withX: 138)
                 self.defineOriginX(forViews: [self.gridImage3button], withX: 8)
             default:
