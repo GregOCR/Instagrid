@@ -109,7 +109,7 @@
                                                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-44-eNZ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="270"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geI-Yb-T14">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geI-Yb-T14">
                                                                         <rect key="frame" x="8" y="8" width="124" height="124"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,10 +123,10 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="gridImage1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1fu-QV-vtV"/>
+                                                                            <action selector="gridImageSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1s1-Te-iq8"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUG-TH-Er6">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUG-TH-Er6">
                                                                         <rect key="frame" x="138" y="8" width="124" height="124"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,10 +140,10 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="gridImage2Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GAq-rY-ix0"/>
+                                                                            <action selector="gridImageSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JN7-1v-el8"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-kw-0bX">
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-kw-0bX">
                                                                         <rect key="frame" x="8" y="138" width="124" height="124"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,10 +157,10 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="gridImage3Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="biL-1W-MKP"/>
+                                                                            <action selector="gridImageSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ms3-HT-jqk"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-5A-5P0">
+                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-5A-5P0">
                                                                         <rect key="frame" x="138" y="138" width="124" height="124"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,7 +174,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="gridImage4Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WjU-U1-JCM"/>
+                                                                            <action selector="gridImageSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2aW-9L-5b7"/>
                                                                         </connections>
                                                                     </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8r-YI-lT4">
@@ -263,14 +263,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66b-AN-eOB" userLabel="1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1E-wR-DLn" userLabel="grid1 Select Button">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1E-wR-DLn" userLabel="grid1 Select Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <state key="normal" image="miniGrid1"/>
                                                                         <connections>
-                                                                            <action selector="grid1Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DEO-zh-tDl"/>
+                                                                            <action selector="gridSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NOn-pr-9NS"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="Lpn-LM-Uwp">
+                                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="Lpn-LM-Uwp">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="85" id="pWw-Pm-462"/>
@@ -288,14 +288,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohn-cH-XEH" userLabel="2">
                                                                 <rect key="frame" x="100" y="0.0" width="85" height="85"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-GH-gp3" userLabel="grid2 Select Button">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-GH-gp3" userLabel="grid2 Select Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <state key="normal" image="miniGrid2"/>
                                                                         <connections>
-                                                                            <action selector="grid2Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kEY-za-euh"/>
+                                                                            <action selector="gridSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N4U-lj-3gV"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <imageView hidden="YES" autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="tGV-5H-PgN">
+                                                                    <imageView hidden="YES" autoresizesSubviews="NO" userInteractionEnabled="NO" tag="2" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="tGV-5H-PgN">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="85" id="95W-Bc-Rhv"/>
@@ -313,14 +313,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2m-s3-ZFm" userLabel="3">
                                                                 <rect key="frame" x="200" y="0.0" width="85" height="85"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-Qd-tTL" userLabel="grid3 Select Button">
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-Qd-tTL" userLabel="grid3 Select Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <state key="normal" image="miniGrid3"/>
                                                                         <connections>
-                                                                            <action selector="grid3Selection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nNa-Pr-fa9"/>
+                                                                            <action selector="gridSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3h-xl-kVi"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <imageView hidden="YES" autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="feT-7y-VFf">
+                                                                    <imageView hidden="YES" autoresizesSubviews="NO" userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="feT-7y-VFf">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="85" id="Ut9-OA-nxQ"/>
@@ -435,25 +435,25 @@
                     </view>
                     <connections>
                         <outlet property="arrowToShareLabel" destination="pQ2-nH-zxC" id="nmF-34-yC4"/>
-                        <outlet property="checkedGridSelector1" destination="Lpn-LM-Uwp" id="0pH-hI-8ah"/>
-                        <outlet property="checkedGridSelector2" destination="tGV-5H-PgN" id="fft-WY-uwb"/>
-                        <outlet property="checkedGridSelector3" destination="feT-7y-VFf" id="z7d-Z2-yvk"/>
-                        <outlet property="grid1SelectButton" destination="T1E-wR-DLn" id="aDM-wN-LrU"/>
-                        <outlet property="grid2SelectButton" destination="ohU-GH-gp3" id="L27-nv-Wrc"/>
-                        <outlet property="grid3SelectButton" destination="wf8-Qd-tTL" id="4On-ew-MZh"/>
                         <outlet property="gridBlankImage" destination="Vhu-NS-6Au" id="ihJ-X0-mEx"/>
                         <outlet property="gridGlobalView" destination="cgY-44-eNZ" id="gbR-j4-647"/>
-                        <outlet property="gridImage1" destination="J8r-YI-lT4" id="cc2-JC-N9K"/>
-                        <outlet property="gridImage1button" destination="geI-Yb-T14" id="fdt-6D-VK8"/>
-                        <outlet property="gridImage2" destination="WIp-X2-Cnc" id="b1N-eP-myR"/>
-                        <outlet property="gridImage2button" destination="LUG-TH-Er6" id="4Xi-ca-H4E"/>
-                        <outlet property="gridImage3" destination="mBA-fE-1Xp" id="947-Rn-E4O"/>
-                        <outlet property="gridImage3button" destination="ucM-kw-0bX" id="JTD-ei-IuD"/>
-                        <outlet property="gridImage4" destination="jZL-Sy-Shr" id="oP4-gW-hmP"/>
-                        <outlet property="gridImage4button" destination="fpN-5A-5P0" id="CbQ-O9-Dcu"/>
                         <outlet property="instagridLogo" destination="Uow-T6-TBl" id="200-ob-vxh"/>
                         <outlet property="logoLongPressGesture" destination="Owr-BL-OD5" id="bu7-AF-cVY"/>
                         <outlet property="swipeToShareLabel" destination="j69-ep-eVs" id="t4n-fF-7yF"/>
+                        <outletCollection property="gridImageButtons" destination="geI-Yb-T14" collectionClass="NSMutableArray" id="ISq-10-wCN"/>
+                        <outletCollection property="gridImageButtons" destination="LUG-TH-Er6" collectionClass="NSMutableArray" id="Qjb-oS-gRN"/>
+                        <outletCollection property="gridImageButtons" destination="ucM-kw-0bX" collectionClass="NSMutableArray" id="cCK-rI-0Ze"/>
+                        <outletCollection property="gridImageButtons" destination="fpN-5A-5P0" collectionClass="NSMutableArray" id="ZCm-oR-RuB"/>
+                        <outletCollection property="gridImages" destination="J8r-YI-lT4" collectionClass="NSMutableArray" id="Ctx-lX-5Hx"/>
+                        <outletCollection property="gridImages" destination="WIp-X2-Cnc" collectionClass="NSMutableArray" id="aPs-gg-ZDH"/>
+                        <outletCollection property="gridImages" destination="mBA-fE-1Xp" collectionClass="NSMutableArray" id="xsi-c3-inw"/>
+                        <outletCollection property="gridImages" destination="jZL-Sy-Shr" collectionClass="NSMutableArray" id="yww-9W-6Bd"/>
+                        <outletCollection property="gridSelectionButtons" destination="T1E-wR-DLn" collectionClass="NSMutableArray" id="mBQ-7t-XIL"/>
+                        <outletCollection property="gridSelectionButtons" destination="ohU-GH-gp3" collectionClass="NSMutableArray" id="LVW-Ff-pD5"/>
+                        <outletCollection property="gridSelectionButtons" destination="wf8-Qd-tTL" collectionClass="NSMutableArray" id="UAt-VT-6kA"/>
+                        <outletCollection property="gridSelectors" destination="Lpn-LM-Uwp" collectionClass="NSMutableArray" id="ydm-ql-9bW"/>
+                        <outletCollection property="gridSelectors" destination="tGV-5H-PgN" collectionClass="NSMutableArray" id="qfg-0M-H82"/>
+                        <outletCollection property="gridSelectors" destination="feT-7y-VFf" collectionClass="NSMutableArray" id="euj-BK-yVa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

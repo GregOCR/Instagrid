@@ -18,23 +18,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var gridBlankImage: UIImageView!
     @IBOutlet weak var gridGlobalView: UIView!
     
-    @IBOutlet weak var grid1SelectButton: UIButton!
-    @IBOutlet weak var grid2SelectButton: UIButton!
-    @IBOutlet weak var grid3SelectButton: UIButton!
+    @IBOutlet var gridImageButtons: [UIButton]!
     
-    @IBOutlet weak var checkedGridSelector1: UIImageView!
-    @IBOutlet weak var checkedGridSelector2: UIImageView!
-    @IBOutlet weak var checkedGridSelector3: UIImageView!
+    @IBOutlet var gridImages: [UIImageView]!
     
-    @IBOutlet weak var gridImage1button: UIButton!
-    @IBOutlet weak var gridImage2button: UIButton!
-    @IBOutlet weak var gridImage3button: UIButton!
-    @IBOutlet weak var gridImage4button: UIButton!
+    @IBOutlet var gridSelectionButtons: [UIButton]!
     
-    @IBOutlet weak var gridImage1: UIImageView!
-    @IBOutlet weak var gridImage2: UIImageView!
-    @IBOutlet weak var gridImage3: UIImageView!
-    @IBOutlet weak var gridImage4: UIImageView!
+    @IBOutlet var gridSelectors: [UIImageView]!
     
     @IBOutlet var logoLongPressGesture: UILongPressGestureRecognizer!
     
@@ -56,28 +46,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.messagePopup(title: "Grid option", message: "Successfully cleared!", buttonString: "", asAlert: true, delay: 1)
     }
     
-    @IBAction func grid1Selection(_ sender: Any) {
-        self.gridSelection(1)
-    }
-    @IBAction func grid2Selection(_ sender: Any) {
-        self.gridSelection(2)
-    }
-    @IBAction func grid3Selection(_ sender: Any) {
-        self.gridSelection(3)
+    @IBAction func gridSelection(_ sender: UIButton) {
+        self.gridSelection(sender.tag)
     }
     
-    @IBAction func gridImage1Button(_ sender: Any) {
-        self.loadImage(1)
+    @IBAction func gridImageSelection(_ sender: UIButton) {
+        self.loadImage(sender.tag)
     }
-    @IBAction func gridImage2Button(_ sender: Any) {
-        self.loadImage(2)
-    }
-    @IBAction func gridImage3Button(_ sender: Any) {
-        self.loadImage(3)
-    }
-    @IBAction func gridImage4Button(_ sender: Any) {
-        self.loadImage(4)
-    }
+
     
     // switching the clear after shared grid option when long press the logo
     @IBAction func logoLongPressGestureGridOption(_ sender: Any) {
@@ -136,34 +112,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // reset the imageSet inspector
         self.imagePicked = [0,0,0,0]
         
-        let imageContainers = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
-        let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
+        self.gridImages.forEach { $0.image = nil }
         
-        imageContainers.forEach { $0?.image = nil }
-        
-        buttons.forEach { $0?.alpha = 1 }
+        self.gridImageButtons.forEach { $0.alpha = 1 }
     }
     
     private func loadImage(_ number: Int) {
-        let imageContainers = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
         self.imagePicker.allowsEditing = false
         self.imagePicker.sourceType = .photoLibrary
         
         present(self.imagePicker, animated: true, completion: nil)
         
-        self.loadImageInView = imageContainers[number-1]
+        self.loadImageInView = self.gridImages[number-1]
         self.pickingImage = number
     }
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.loadImageInView.contentMode = .scaleAspectFill
             self.loadImageInView.image = pickedImage
             self.imagePicked[pickingImage-1] = 1
             
-            buttons[self.pickingImage-1]?.alpha = 0.02
+            self.gridImageButtons[self.pickingImage-1].alpha = 0.02
         }
         dismiss(animated: true, completion: nil)
     }
@@ -194,12 +165,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // select the clicked grid and show it in the main view
     private func gridSelection(_ grid: Int) {
-        let gridButtonsSet = [self.grid1SelectButton, self.grid2SelectButton, self.grid3SelectButton]
-        
         self.updateCheckedGridSelectorFor(grid)
         
-        gridButtonsSet.forEach { $0?.isEnabled = true }
-        gridButtonsSet[grid-1]?.isEnabled = false
+        self.gridSelectionButtons.forEach { $0.isEnabled = true }
+        self.gridSelectionButtons[grid-1].isEnabled = false
         
         self.updateImagesLocationIntoGrid(number: grid)
     }
@@ -219,26 +188,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // updating the location and size of images button depending the selected grid
     private func updateImagesLocationIntoGrid(number: Int) {
         UIView.animate(withDuration: 0.25) {
-            self.defineOriginX(forViews: [self.gridImage2button], withX: 8)
-            self.defineOriginX(forViews: [self.gridImage3button], withX: 138)
-            self.defineOriginY(forViews: [self.gridImage1button, self.gridImage2button], withY: 8)
-            self.defineOriginY(forViews: [self.gridImage3button], withY: 138)
-            self.defineSize(forViews: [self.gridImage1button], withWidth: 254, withHeight: 124)
-            self.defineSize(forViews: [self.gridImage4button], withWidth: 0, withHeight: 0)
+            self.defineOriginX(forViews: [self.gridImageButtons[1]], withX: 8)
+            self.defineOriginX(forViews: [self.gridImageButtons[2]], withX: 138)
+            self.defineOriginY(forViews: [self.gridImageButtons[0], self.gridImageButtons[1]], withY: 8)
+            self.defineOriginY(forViews: [self.gridImageButtons[2]], withY: 138)
+            self.defineSize(forViews: [self.gridImageButtons[0]], withWidth: 254, withHeight: 124)
+            self.defineSize(forViews: [self.gridImageButtons[3]], withWidth: 0, withHeight: 0)
             
             switch number {
             case 2:
                 self.gridType = 3
-                self.defineOriginY(forViews: [self.gridImage1button], withY: 138)
-                self.defineOriginY(forViews: [self.gridImage3button], withY: 8)
+                self.defineOriginY(forViews: [self.gridImageButtons[0]], withY: 138)
+                self.defineOriginY(forViews: [self.gridImageButtons[2]], withY: 8)
             case 3:
                 self.gridType = 4
-                self.defineSize(forViews: [self.gridImage1button, self.gridImage4button], withWidth: 124, withHeight: 124)
-                self.defineOriginX(forViews: [self.gridImage2button], withX: 138)
-                self.defineOriginX(forViews: [self.gridImage3button], withX: 8)
+                self.defineSize(forViews: [self.gridImageButtons[0], self.gridImageButtons[3]], withWidth: 124, withHeight: 124)
+                self.defineOriginX(forViews: [self.gridImageButtons[1]], withX: 138)
+                self.defineOriginX(forViews: [self.gridImageButtons[2]], withX: 8)
             default:
                 self.gridType = 3
-                self.defineOriginY(forViews: [self.gridImage2button], withY: 138)
+                self.defineOriginY(forViews: [self.gridImageButtons[1]], withY: 138)
             }
         }
         self.updateImagesPositionAndSize()
@@ -246,22 +215,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // updating the location and size of images as images buttons are
     private func updateImagesPositionAndSize() {
-        let images = [self.gridImage1, self.gridImage2, self.gridImage3, self.gridImage4]
-        let buttons = [self.gridImage1button, self.gridImage2button, self.gridImage3button, self.gridImage4button]
-        
-        for i in 0...3 {
+        for i in 0...gridImages.count-1 {
             UIView.animate(withDuration: 0.25) {
-                images[i]?.frame.size = (buttons[i]?.frame.size) ?? CGSize()
-                images[i]?.frame.origin = (buttons[i]?.frame.origin) ?? CGPoint()
+                self.gridImages[i].frame.size = (self.gridImageButtons[i].frame.size)
+                self.gridImages[i].frame.origin = (self.gridImageButtons[i].frame.origin)
             }
         }
     }
     
     // switching the selected grid icon depending the selected grid
     private func updateCheckedGridSelectorFor(_ grid: Int) {
-        let checkedGridSelectors = [self.checkedGridSelector1, self.checkedGridSelector2, self.checkedGridSelector3]
-        checkedGridSelectors.forEach { $0?.isHidden = true }
-        checkedGridSelectors[grid-1]?.isHidden = false
+        self.gridSelectors.forEach { $0.isHidden = true }
+        self.gridSelectors[grid-1].isHidden = false
     }
     
     private func shareTheGrid() {
